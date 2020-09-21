@@ -1,0 +1,7 @@
+lxc launch ubuntu:18.04 vyos -c security.nesting=true -c security.privileged=true
+lxc config device add vyos vagrant disk source=/lib/modules/ path=/lib/modules/
+lxc exec vyos /bin/bash
+
+curl https://get.docker.com | sh
+
+docker run -d --name router1 --net=none --privileged -v /lib/modules:/lib/modules kurochan/vyos /sbin/init

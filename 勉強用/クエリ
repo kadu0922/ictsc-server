@@ -1,0 +1,9 @@
+create database ictsc_inc;
+use ictsc_inc;
+create table user ( id int, First_Name varchar(255), Last_Name varchar(255), Age varchar(255), Sex varchar(255) );
+insert into user value (1,"Tarou","Yamada","23","MAN");
+insert into user value (2,'Emi','Uchiyama','23','WOMAN');
+insert into user value (3,"Ryo","Satou","25","MAN");
+insert into user value (4,"Yuki","Tayama","22","WOMAN");
+insert into user value (5,"Yuto","Takahashi","21","MAN");
+select * from user;

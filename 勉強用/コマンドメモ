@@ -1,0 +1,38 @@
+docker run --name mariaDB -e MYSQL_ROOT_PASSWORD=root -d mariadb
+dockerでmariaDBのコンテナ作るとき、環境変数にpassを入れる必要がある
+
+docker run -v [ホストディレクトリの絶対パス]:[コンテナの絶対パス] [イメージ名] [コマンド]
+docker run -v /home/cosylab/docker/mariaDB:/var/lib/mysql
+
+
+mariadbのコンテナを作るときのコマンド
+
+Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+docker exec -it some-mariadb bash
+
+docker run -m "4M" -v /home/ubuntu/mariaDB:/var/lib/mysql --name mariaDB -e MYSQL_ROOT_PASSWORD=root -d mariadb
+
+lxc　on dockerのlxc部分
+lxc launch ubuntu:18.04 [こんてな名] -c security.nesting=true -c security.privileged=true
+sudo lxc exec [こんてな名] /bin/bash
+
+dockerインストール用スクリプト
+curl https://get.docker.com | sh
+
+コンテナバックアップ
+lxc snapshot mariaDB mariaDB-snap1
+
+もとに戻す
+lxc restore  mariaDB mariaDB-snap1
+
+ホストからコンテナにファイルを上げる
+lxc file push -r [ホストのパス]　[コンテナ名]/[ホストの絶対パス]
+lxc file push -r /home/cosylab/docker/mariaDB mariaDB/home/ubuntu/mariaDB
+lxc file push -r /lib/modules/ vyos/lib/modules/
+
+lxcのホストからコンテナにマウント方法
+sudo lxc config device add vyos vagrant disk source=/lib/modules path=/lib/modul
+docker run -it --name test --net=client --ip=192.168.56.101 -d mysql /bin/bash
+
+lxc file push -r /lib/modules/ vyos/lib/modules/

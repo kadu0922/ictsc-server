@@ -1,0 +1,6 @@
+lxc launch ubuntu:18.04 mariaDB -c security.nesting=true -c security.privileged=true
+lxc file push -r /home/cosylab/docker/mariaDB mariaDB/home/ubuntu/mariaDB
+sudo lxc exec mariaDB /bin/bash
+
+curl https://get.docker.com | sh
+docker run -m "4M" -v /home/ubuntu/mariaDB:/var/lib/mysql --name mariaDB -e MYSQL_ROOT_PASSWORD=root -d mariadb

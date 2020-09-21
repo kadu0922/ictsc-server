@@ -1,0 +1,6 @@
+      dhcp4: false
+      dhcp6: false
+      addresses: [150.89.233.21/26]
+      gateway4: 150.89.233.1
+      nameservers:
+        addresses: [150.89.209.24, 8.8.8.8, 1.1.1.1]
